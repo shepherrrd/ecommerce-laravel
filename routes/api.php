@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,4 +34,5 @@ Route::group(['middleware' => ['auth:sanctum','admin']], function(){
 Route::group(['middleware' => 'auth:sanctum'],function (){
 Route::get('cart', [CartController::class,'index']);
 Route::post('cart/add', [CartController::class,'store']);
+Route::post('checkout', [OrderController::class,'checkout']);
 });
